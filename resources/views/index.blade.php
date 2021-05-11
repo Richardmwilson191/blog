@@ -74,7 +74,7 @@
         <div class="flex bg-blue-600 text-gray-100 pt-10">
             <div class="m-auto pt-4 pb-16 sm:m-auto w-4/5 block">
                 <span class="uppercase text-l font-extrabold">
-                    PHP
+                    {{ $post->title }}
                 </span>
 
                 <h3 class="text-l font-bold py-10 text-gray-200">

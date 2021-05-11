@@ -31,7 +31,7 @@
 
     <div class="sm:grid grid-cols-2 gap-20 w-4/5 mx-auto py-15 border-b border-gray-200">
         <div>
-            <img src="https://cdn.pixabay.com/photo/2020/04/08/16/32/keyboard-5017973_960_720.jpg" width="500" alt="">
+            <img src="{{ asset('images/' . $post->image_path ) }}" width="500" alt="">
         </div>
         <div>
             <h2 class="text-gray-700 font-bold text-5xl pb-4">
@@ -49,6 +49,26 @@
             <a href="{{$post->slug}}" class="uppercase bg-blue-500 text-gray-100 text-l font-extrabold py-4 px-8 rounded-3xl">
                 KEEP READING
             </a>
+
+            @if(isset(Auth::user()->id) && Auth::user()->id == $post->user_id)
+                <span class="float-right">
+                    <a href="/blog/{{ $post->slug }}/edit" class="text-gray-700 italic hover:text-gray-900 pb-1 border-b-2 py-1 px-2">
+                        Edit
+                    </a>
+                </span>
+
+                <span class="float-right">
+                    <form action="/blog/{{ $post->slug }}" 
+                    method="post">
+                    @csrf
+                    @method('DELETE')
+
+                        <button class="text-red-500 pr-3">
+                            Delete
+                        </button>
+                    </form>
+                </span>
+            @endif
         </div>
         
     </div>

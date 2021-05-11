@@ -4,7 +4,7 @@
 <div class="w-4/5 m-auto text-left">
     <div class="py-15">
         <h1 class="text-6xl">
-            Create Post
+            Update Post
         </h1>
     </div>
 </div>
@@ -23,21 +23,23 @@
 
 <div class="w-4/5 m-auto pt-20">
     <form 
-        action="/blog" 
+        action="/blog/{{ $post->slug }}" 
         method="post"
         enctype="multipart/form-data">
         @csrf
+        @method('PUT')
 
         <input 
             type="text" 
             name="title" 
-            placeholder="Title..." 
+            value="{{ $post->title }}"
             class="bg-transparent block border-b-2 w-full h-20 text-6xl outline-none">
 
         <textarea 
             name="description" 
-            placeholder="Description..."
+            value="Description..."
             class="py-20 bg-transparent block border-b-2 w-full h-60 text-xl outline-none">
+            {{ $post->description }}
         </textarea>
 
         <div class="bg-gray-lighter pt-15">
